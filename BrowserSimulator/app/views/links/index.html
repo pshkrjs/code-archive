@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Browser Simulator</title>
+    </head>
+    <body>
+        <center>
+            <form>
+                <input type="button" value="Back" id="back">
+                <input type="button" value="Next" id="next">
+                <input type="text" placeholder="Enter URL..." id="url">
+                <input type="button" value="GO" id="go">
+                <br />
+                <input type="button" value="Show History" id="history">
+            </form>
+            <div class="links">
+            </div>
+        </center>
+
+        <!-- Scripts -->
+        <script 
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                var current_id = 0;
+                $('.links').toggle();
+                var get_history = function(){
+                    var url_path = "/links/new";
+                    console.log(current_id);
+                    $.ajax({
+                        url: url_path,
+                        type: "GET",
+                        context: this,
+                        error: function(){
+                            console.log("Some error in finding links")
+                            $('#url').val("");
+                        },
+                        success: function(response){
+                            console.log(response.data);
+                            $('.links').html("");
+                            for(var i=0; i<response.data.length; i++){
+                                $('.links').html($('.links').html()+"<a href='"+response.data[i].url_path+"' >"+response.data[i].url_path+"</a><br>");
+                            }
+                        }
+                    });
+                };
+                get_history();
+                $("#go").on("click", function(){
+                    var myData = {"url_path": $("#url").val()}
+                    $.ajax({
+                        url: "/links",
+                        type: "POST",
+                        data: myData,
+                        context: this,
+                        error: function(){
+                            console.log("Some error in creating")
+                        },
+                        success: function(response, id){
+                            console.log(response);
+                            $('#url').val(response.data.url_path);
+                            current_id = response.data.id;
+                            console.log(current_id);
+                            get_history();
+                        }
+                    });
+                });
+                $('#history').on("click", function(){
+                    $('.links').toggle();
+                });
+                $('#back').on("click", function(){
+                    var url_path = "/links/"+(current_id-1);
+                    console.log(current_id-1);
+                    $.ajax({
+                        url: url_path,
+                        type: "GET",
+                        context: this,
+                        error: function(){
+                            console.log("Some error in finding link")
+                            $('#url').val("");
+                        },
+                        success: function(response){
+                            console.log(response);
+                            $('#url').val(response.data.url_path);
+                            current_id--;
+                            // console.log(id);
+                        }
+                    });
+                });
+                $('#next').on("click", function(){
+                    var url_path = "/links/"+(current_id+1);
+                    console.log(current_id+1);
+                    $.ajax({
+                        url: url_path,
+                        type: "GET",
+                        context: this,
+                        error: function(){
+                            console.log("Some error in finding link")
+                            $('#url').val("");
+                        },
+                        success: function(response){
+                            console.log(response);
+                            $('#url').val(response.data.url_path);
+                            current_id++;
+                            // console.log(id);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
