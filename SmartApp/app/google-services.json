@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "38531179805",
+    "firebase_url": "https://smartapp-64e76.firebaseio.com",
+    "project_id": "smartapp-64e76",
+    "storage_bucket": "smartapp-64e76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38531179805:android:91cea46a28dd21b8",
+        "android_client_info": {
+          "package_name": "hinge.college.smartapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38531179805-lk5ljete8neftdl56omt76k49a60i1mh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hinge.college.smartapp",
+            "certificate_hash": "029050E90E622C7DD006FACFB0F5CDA8424AC3B6"
+          }
+        },
+        {
+          "client_id": "38531179805-3igm153h3n7u0brktrn4dtmj0pu5d2n6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK0CIeKjRCz6mjQDjFlHXOIjsi7BQCNIk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38531179805-3igm153h3n7u0brktrn4dtmj0pu5d2n6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
