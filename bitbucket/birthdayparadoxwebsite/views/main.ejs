@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  </head>
+  <body >
+
+      <div class="container">
+        <div class="row center-align">
+          <div class="col s12 m12 l12 offset-l0">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Birthday Paradox</span>
+                <div class="container">
+                  <div class="row left-align">
+                    <p >In probability theory, the birthday paradox concerns the probability that,
+                      <br>
+                      <br>
+                          in a set of <b>n randomly chosen people</b>, some pair of them will have the same birthday.
+                      <br>By the pigeonhole principle, the probability reaches <b>100%</b> when the number of people reaches <b>367</b>.
+                      <br>
+                      However, <b>99.9%</b> probability is reached with just <b>70 people</b>, and <b>50%</b> probability with <b>23 people</b></p>
+                  </div>
+                  <div class="row center-align ">
+                    <a class="waves-effect waves-light btn green lighten-1" id="performExpt">Verify Birthday Paradox</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Verify Birthday Paradox for given number of People in a Room</span>
+                <div class="container">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="no_of_people" type="text">
+                      <label for="no_of_people">Enter number of people in the room</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="no_of_trials" type="text">
+                      <label for="no_of_trials">Enter number of trials to be run</label>
+                    </div>
+                  </div>
+                  <div class="row center-align">
+                    <a class="waves-effect waves-light btn green lighten-1" id="performExpt2">Verify</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div>
+
+
+      <footer style="position:absolute;bottom:0;,height:40px;,margin-top:40px;">
+        <% include ./footer %>
+      </footer>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+      <script>
+        $(document).ready(function(){
+          $( "#performExpt" ).click(function() {
+            //console.log("hello")
+            $(location).attr("href",$(location).attr("href")+"paradox/");
+
+            //window.location.replace("http://localhost:8002/paradox/"+$("#no_of_people").val()+"/"+$("#no_of_trials").val());
+          });
+
+          $( "#performExpt2" ).click(function() {
+            //console.log("hello")
+            $(location).attr("href",$(location).attr("href")+"paradoxFor/"+$("#no_of_people").val()+"/"+$("#no_of_trials").val());
+
+            //window.location.replace("http://localhost:8002/paradox/"+$("#no_of_people").val()+"/"+$("#no_of_trials").val());
+          });
+
+        });
+      </script>
+  </body>
+</html>

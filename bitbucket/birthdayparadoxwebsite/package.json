@@ -1,0 +1,25 @@
+{
+  "name": "birthday_paradox",
+  "version": "1.0.0",
+  "description": "A simple web app to verify the Birthday Paradox",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "test": "istanbul cover -x *.test.js node_modules/mocha/bin/_mocha -- -R spec utils.test.js"
+  },
+  "author": "Team Pass",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "chart.js": "^2.1.4",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
+    "random-array-subset": "^1.0.2",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.5.3"
+  }
+}

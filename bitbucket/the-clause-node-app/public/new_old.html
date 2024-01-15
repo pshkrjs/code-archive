@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clause</title>
+</head>
+<body>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js">
+</script>
+
+
+<script type="text/javascript">
+
+
+var local = "localhost";
+var amazon = "ec2-52-23-242-131.compute-1.amazonaws.com";
+var host = local;
+	$(document).ready(function() {
+			$('#post').click(function(){
+				var textContent = document.getElementById("post_body").innerHTML;
+					//alert("Yolo : " + textContent);
+
+					$.ajax({
+						type : "POST",
+						url : "http://" + host + ":8080/medium/post",
+						data : {content : textContent},
+						success : function(response) {
+						//	console.log("AWESOME. successfully sent ajax");
+						alert(response);
+							window.location="http://medium.com/m/oauth/authorize?client_id=f9ac9c750c0a&scope=basicProfile,publishPost&state=yolo&response_type=code&redirect_uri=http://" + host + ":8080/auth/callback";
+						},
+						error : function() {
+							console.log("Error. while sending ajax");
+						}
+					});
+			});
+	});
+
+</script>
+<a href="/auth/medium">Authorize</a>
+<br>
+<button type="button" name="button" id="post">Click me</button>
+<br><br>
+
+<div id="post_body"></div>
+
+</body>
+</html>

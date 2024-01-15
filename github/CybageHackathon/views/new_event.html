@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ./partials/head.html %>
+</head>
+<body>
+
+	<header>
+		<% include ./partials/header.html %>
+	</header>
+	
+	<main>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="well bs-component">
+              <form class="form-horizontal">
+                <fieldset>
+                  <legend>Create new Event</legend>
+                  <div class="form-group">
+                    <label for="title" class="col-lg-2 control-label">Title</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="title" placeholder="Event Title">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lat" class="col-lg-2 control-label">Latitude</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="lat" placeholder="Event Latitude">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lon" class="col-lg-2 control-label">Longitude</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="lon" placeholder="Event Longitude">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="time" class="col-lg-2 control-label">Time</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="time" placeholder="Event Time">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="points" class="col-lg-2 control-label">Points</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="points" placeholder="Points Title">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="tags" class="col-lg-2 control-label">Tags</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="tags" placeholder="Event Tags">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="creator" class="col-lg-2 control-label">Creator</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="creator" placeholder="Event Creator">
+                    </div>
+                  </div>
+                  <div class="form-group">
+									  <label class="control-label col-lg-2" for="description">Description</label>
+									  <div class="col-lg-10">
+									  	<input class="form-control input-lg" type="text" id="description" placeholder="Event Description">
+									  </div>
+									</div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button class="btn btn-primary" onclick="createNewEvent()">Create</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div><!---
+		<form>
+			<input placeholder="Enter event title..." type="text" id="title"><br />
+			<input placeholder="Enter event lat..." type="text" id="lat"><br />
+			<input placeholder="Enter event lon..." type="text" id="lon"><br />
+			<input placeholder="Enter event time..." type="text" id="time"><br />
+			<input placeholder="Enter event points..." type="text" id="points"><br />
+			<input placeholder="Enter event tags..." type="text" id="tags"><br />
+			<input placeholder="Enter event creator..." type="text" id="creator"><br />
+			<textarea placeholder="Enter event description..." id="description"></textarea><br />
+			<input type="button" value="Create" onclick="createNewEvent()">
+		</form>-->
+	</main>
+
+	<script type="text/javascript">
+		function createNewEvent() {
+      // e.preventDefault();
+			var data = {};
+			data.title = document.getElementById("title").value;
+			data.lat = parseInt(document.getElementById("lat").value);
+			data.lon = parseInt(document.getElementById("lon").value);
+			data.time = document.getElementById("time").value;
+			data.points = parseInt(document.getElementById("points").value);
+			data.tags = document.getElementById("tags").value;
+			data.creator = document.getElementById("creator").value;
+			data.description = document.getElementById("description").value;
+			// console.log(data);
+			var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open("POST", "http://localhost:8080/api/event/create", true);
+	    xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	    xmlHttp.onreadystatechange = function () {
+  		  if(xmlHttp.readyState==4){
+          console.log("event_id"+xmlHttp.responseText);
+	  		  window.location = 'http://localhost:8080/event/' + JSON.parse(xmlHttp.responseText).event_id;
+        }else
+            console.log("something");
+  		};
+      xmlHttp.send(JSON.stringify(data));
+		}
+	</script>
+
+	<footer>	
+		<% include ./partials/footer.html %>
+	</footer>
+
+</body>
+</html>

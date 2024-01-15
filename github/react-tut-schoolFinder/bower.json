@@ -1,0 +1,21 @@
+{
+  "name": "react-tut",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Pushkaraj Shinde <pushkaraj.shinde@hotmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.6"
+  }
+}

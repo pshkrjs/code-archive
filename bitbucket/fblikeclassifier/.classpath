@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="jars/cassandra-driver-core-3.1.4.jar"/>
+	<classpathentry kind="lib" path="jars/guava-17.0.jar"/>
+	<classpathentry kind="lib" path="jars/jcommon-1.0.13.jar"/>
+	<classpathentry kind="lib" path="jars/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="jars/metrics-core-3.0.2.jar"/>
+	<classpathentry kind="lib" path="jars/netty-all-4.1.9.Final.jar"/>
+	<classpathentry kind="lib" path="jars/restfb-1.38.0.jar"/>
+	<classpathentry kind="lib" path="jars/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="jars/slf4j-simple-1.7.25.jar"/>
+	<classpathentry kind="lib" path="jars/weka-stable-3.6.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

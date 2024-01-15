@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ./partials/head.html %>
+</head>
+<body>
+
+	<header>
+		<% include ./partials/header.html %>
+	</header>
+	
+	<main>
+    <div class="container">
+    <div class="jumbotron">
+      <h1>Onboarding Citizens using Gamification !</h1>
+                <p>There's a disconnect between the people looking for help and the people who are able to provide it. The problem, then, is of social awareness and modern incentivization. We draw from the principles of game mechanics to build an over-simplified representation of gamification and its psychological lures to engage citizens in activities that benefit the society.</p>
+                <p><a class="btn btn-primary btn-lg" href="http://localhost:8080/event/new">Create New Event</a></p>
+              </div>
+              </div>
+	</main>
+
+	<script type="text/javascript">
+		function markAll () {
+			var data = {};
+			data.event_id = 39;
+			var url = "http://localhost:8080/api/event/update/" + data.event_id;
+			console.log(url);
+			var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open("GET" ,url , true);
+	    //xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	    //xmlHttp.send(JSON.stringify(data));
+	    xmlHttp.onreadystatechange = function () {
+  		  if(xmlHttp.readyState==4)
+	  		  console.log('success');
+	  		  //window.location = 'http://localhost:8080/event/' + JSON.parse(xmlHttp.responseText).event_id;
+  		};
+		}
+	</script>
+
+	<footer>	
+		<% include ./partials/footer.html %>
+	</footer>
+
+</body>
+</html>

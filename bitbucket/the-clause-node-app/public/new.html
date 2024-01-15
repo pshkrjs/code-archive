@@ -1,0 +1,250 @@
+<!--
+		Version 1.0 of The Clause : Hemingwayapp to Medium
+	  Hi there. This is made by Aditya Shirole(adityacr7shirole@gmail.com) & Pushkaraj Shinde(pushkarajshinde@hotmail.com).
+    We would like to thank the Medium team for giving us access to the Medium Publish API.
+		A special shout out to Adam Long, the co-creator of Hemingwayapp, for telling us this is badass :P
+
+		Also to Vikram Babu ,Dan Pupius ,Saul CarlinNick Frost ,Aniket Bhattacharya ,
+		Piyush Chavan ,Ayushman Pershad ,Shivee Gupta ,Mikhail St-Denis ,Alexander Svensson ,
+		Rafael Coimbra ,Ahmet Ozkale ,Nina Baitenova ,Emmet Ferdle ,Ananyaa Ravi ,Miss Tori ,
+		Faizal Ardiansyah ,Micah Walter ,Michael Sprague ,John Gibson ,Chris ,Jason Theodor ,
+		Marcin Wichary ,Rudy Winnacker ,Andrew Neal ,Chris Witko ,Dan Benson ,Pankaj Chobharkar ,
+		Carrie Norton ,Atin Batra ,Terrin Tokyo for Recommending our Medium Post. \m/
+
+		We would love your feedback. This is just the first version. Feel free to talk to us
+		or connect with us on twitter/product hunt/ medium / mail . :P
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Clause</title>
+	<!--Import Google Icon Font-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/server_call.js"></script>
+
+			<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-63030577-2', 'auto');
+	  ga('send', 'clicked');
+
+	</script>
+
+
+</head>
+<body>
+
+	<nav style="background: rgba(255,255,255,0.97);">
+	<div class="nav-wrapper">
+		<!-- <a href="http://theclause.tk"> -->
+			<img src="/icons/clause.png" class="brand-logo center" height="100%">
+		<!-- </a> -->
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a href="#about-us" class="modal-trigger waves-effect waves-light" style="color:#424242;">About Us</a></li>
+		</ul>
+	</div>
+	</nav>
+
+
+	<div class="container">
+		<div class="row"></div>
+		<div class="row">
+			<div class="col s12 card">
+				<div class="card-content">
+					<div class="container">
+						<span class="card-title black-text">Choose options for your post</span>
+						<div class="row"></div>
+						<div class="row">
+							<div class="input-field col s8">
+								<input id="post_title" type="text" length="100" maxlength="100">
+								<label for="post_title">Title</label>
+							</div>
+							<br><button id="publish_btn" class="waves-effect waves-light btn right">Publish to Medium</button>
+						</div>
+						<div class="row">
+							<div class="col s6">
+								<label>Visibility:</label>&nbsp;
+								<input class="group_visibility" name="group_visiblity" type="radio" id="draft" value="0" checked/>
+      							<label for="draft">Draft</label>&nbsp;
+								<input class="group_visibility" name="group_visiblity" type="radio" id="public" value="1" />
+      							<label for="public">Public</label>&nbsp;
+								<input class="group_visibility" name="group_visiblity" type="radio" id="unlisted" value="2" />
+      							<label for="unlisted">Unlisted</label>
+							</div>
+							<label id="visibility_desc"></label>
+						</div>
+						<div class="row">
+							<div class="input-field col s6" id="post_tags"></div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<input id="post_tag_input" type="text" class="validate">
+								<label for="post_tag_input">Tags</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<label>License:</label><br><br>
+								<ul class="tabs">
+									<li class="tab col s4"><a href="#test3" style="color: rgba(0,0,0,0.44);marginBottom : 128px">No rights reserved</a></li>
+									<li class="tab col s4"><a href="#test2" style="color: rgba(0,0,0,0.44);marginBottom : 128px">Some rights reserved</a></li>
+									<li class="tab col s4"><a class="active" href="#test4" style="color: rgba(0,0,0,0.44)marginBottom : 128px;">All rights reserved</a></li>
+								</ul>
+							</div>
+							<div id="test3" class="col s12">
+								<div class="container">
+									<input name="license_group" class="group_license" type="radio" id="l1" value="0" />
+      								<label for="l1">Creative Commons copyright waiver</label><br>
+									<input name="license_group" class="group_license" type="radio" id="l2" value="1" />
+      								<label for="l2">Public domain</label><br>
+								</div>
+							</div>
+							<div id="test2" class="col s12">
+								<div class="container">
+									<input name="license_group" class="group_license" type="radio" id="l3" value="2" />
+      								<label for="l3">Attribution</label><br>
+									<input name="license_group" class="group_license" type="radio" id="l4" value="3" />
+      								<label for="l4">Attribution, no derivatives</label><br>
+									<input name="license_group" class="group_license" type="radio" id="l5" value="4" />
+      								<label for="l5">Attribution, share alike</label><br>
+									<input name="license_group" class="group_license" type="radio" id="l6" value="5" />
+      								<label for="l6">Attribution, non-commercial</label><br>
+									<input name="license_group" class="group_license" type="radio" id="l7" value="6" />
+      								<label for="l7">Attribution, non-commercial, no derivatives</label><br>
+									<input name="license_group" class="group_license" type="radio" id="l8" value="7" />
+      								<label for="l8">Attribution, non-commercial, share alike</label>
+								</div>
+							</div>
+							<div id="test4" class="col s12">
+								<div class="container">
+									<input name="license_group" class="group_license" type="radio" id="l9" value="8" checked/>
+      								<label for="l9">All rights</label><br>
+								</div>
+							</div>
+							<label id="license_desc"></label>
+						</div>
+						<div class="row">
+							<div class="input-field col s10">
+								<label>Preview:</label><br><br>
+								<div id="post_body"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row"></div>
+	</div>
+
+
+		<div id="about-us" class="modal">
+			<div class="modal-content">
+				<div class="row"></div>
+				<div class="row">
+					<div class="col s10 offset-s1">
+						<h4>About Us</h4>
+						<div class="row">
+							<h5>Two College Nerds with the Medium to change things.</h5>
+							<h6>We love Medium. We love HemingwayApp. So when the Medium Publish API was released, we knew what we wanted to do.</h6>
+						</div>
+						<div class="row"></div>
+						<div class="row">
+							<div class="col hoverable s6">
+								<div class="row"></div>
+								<div class="row">
+									<div class="col s5">
+										<img src="/icons/aditya.jpg" alt="" class="circle responsive-img">
+									</div>
+									<div class="col s7">
+										<span style="font-size:18px;">Aditya Shirole</span><br>
+										<span style="font-size:15px; color:#b71c1c;">Medium is my Drug</span><br>
+										<!--<span style="font-size:13px;">Aditya Shirole</span>-->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col s4">
+										<center>
+											<a href="https://twitter.com/Aditya_Shirole">
+												<img src="/icons/twitter.png" alt="" height="30px">
+											</a>
+										</center>
+									</div>
+									<div class="col s4">
+										<center>
+											<a href="https://medium.com/@Aditya_Shirole">
+												<img src="/icons/mediumg.png" alt="" height="30px">
+											</a>
+										</center>
+									</div>
+									<div class="col s4">
+										<center>
+											<a href="https://www.producthunt.com/@aditya_shirole">
+												<img src="/icons/ph.png" alt="" height="30px">
+											</a>
+										</center>
+									</div>
+								</div>
+							</div>
+							<div class="col hoverable s6">
+								<div class="row"></div>
+								<div class="row">
+									<div class="col s5">
+										<img src="/icons/push.jpg" alt="" class="circle responsive-img">
+									</div>
+									<div class="col s7">
+										<span style="font-size:18px;">Pushkaraj Shinde</span><br>
+										<span style="font-size:15px; color:#b71c1c;">Info-Maniac</span><br>
+										<!--<span style="font-size:13px;">Aditya Shirole</span>-->
+									</div>
+								</div>
+								<div class="row">
+									<div class="col s4">
+										<center>
+											<a href="https://twitter.com/push_shinde">
+												<img src="/icons/twitter.png" alt="" height="30px">
+											</a>
+										</center>
+									</div>
+									<div class="col s4">
+										<center>
+											<a href="https://medium.com/@Push.">
+												<img src="/icons/mediumg.png" alt="" height="30px">
+											</a>
+										</center>
+									</div>
+									<div class="col s4">
+										<center>
+											<a href="https://www.producthunt.com/@push_shinde">
+												<img src="/icons/ph.png" alt="" height="30px">
+											</a>
+										</center>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+
+			$('.modal-trigger').leanModal();
+
+		</script>
+
+
+
+</body>
+</html>

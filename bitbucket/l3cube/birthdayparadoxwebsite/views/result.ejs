@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/scripts/materialize-css/dist/css/materialize.min.css">
+  </head>
+  <body>
+      <div class="container">
+        <div class="row center-align">
+          <div class="col s12 m12 l12 offset-m2">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Verification of Birthday Paradox</span>
+                <div class="container">
+                  <div class="row">
+                    <div class="input-field col s12">
+
+                    </div>
+                  </div>
+                  <div class="row">
+                    <!-- <canvas id="myChart" width="375" height="187" style="width: 375px; height: 187px;"></canvas> -->
+                    <canvas id="myChart"></canvas>
+                  </div>
+
+                  <div class="row">
+                    <table>
+                      <thead>
+                        <tr>
+                            <th data-field="people">People in room</th>
+                            <th data-field="expected">Expected Probability</th>
+                            <th data-field="experimental">Experimental Probability</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <% results.forEach(function(result) { %>
+                          <tr>
+                            <td><%= result.numberOfPeople%></td>
+                            <td><%= result.expectedProbability%></td>
+                            <td><%= result.experimentalProbabilty%></td>
+                          </tr>
+
+                        <% }); %>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <footer>
+          <% include ./footer %>
+        </footer>
+      <div>
+
+      <script src="/scripts/jquery/dist/jquery.min.js"></script>
+      <script src="/scripts/materialize-css/dist/js/materialize.min.js"></script>
+      <script>
+        $(document).ready(function(){
+          $( "#performExpt" ).click(function() {
+            //console.log("hello")
+            $(location).attr("href",$(location).attr("href")+"paradox/"+$("#no_of_people").val()+"/"+$("#no_of_trials").val());
+            //window.location.replace("http://localhost:8002/paradox/"+$("#no_of_people").val()+"/"+$("#no_of_trials").val());
+          });
+        });
+      </script>
+      <script type="text/javascript" src="/scripts/chart.js/dist/Chart.bundle.js"></script>
+      <script>
+        var ctx = document.getElementById("myChart");
+        var data = {
+          labels: <%-JSON.stringify(labels)%>,
+          datasets: [
+              {
+                  label: "Calculated Probability",
+                  fill: false,
+                  lineTension: 0.1,
+                  backgroundColor: "rgb(76,175,80,0.4)",
+                  borderColor: "rgb(76,175,80)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgb(76,175,80)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: <%-JSON.stringify(data)%>,
+              },
+              {
+                  label: "Expected Probability",
+                  fill: false,
+                  lineTension: 0.1,
+                  backgroundColor: "rgb(3,169,244,0.4)",
+                  borderColor: "rgb(3,169,244)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgb(3,169,244)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: <%-JSON.stringify(expectedData)%>,
+              }
+          ]
+      };
+
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                title: {
+                  display: true,
+                  text: 'Birthday Paradox Verification',
+                  fontSize: 18,
+                  fontFamily: 'Helvetica'
+                },
+                legend: {
+                  display: true,
+                  labels: {
+                    fontColor: 'rgb(69,90,100)',
+                    fontSize: 16
+                  }
+                },
+                responsive: true,
+                scales: {
+                    xAxes: [{
+                        display: true
+                    }]
+                }
+            }
+        });
+        </script>
+  </body>
+</html>

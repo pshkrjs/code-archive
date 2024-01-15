@@ -1,0 +1,270 @@
+<!--
+		Version 1.0 of The Clause : Hemingwayapp to Medium
+	  Hi there. This is made by Aditya Shirole(adityacr7shirole@gmail.com) & Pushkaraj Shinde(pushkarajshinde@hotmail.com).
+    We would like to thank the Medium team for giving us access to the Medium Publish API.
+		A special shout out to Adam Long, the co-creator of Hemingwayapp, for telling us this is badass :P
+
+		Also to Vikram Babu ,Dan Pupius ,Saul CarlinNick Frost ,Aniket Bhattacharya ,
+		Piyush Chavan ,Ayushman Pershad ,Shivee Gupta ,Mikhail St-Denis ,Alexander Svensson ,
+		Rafael Coimbra ,Ahmet Ozkale ,Nina Baitenova ,Emmet Ferdle ,Ananyaa Ravi ,Miss Tori ,
+		Faizal Ardiansyah ,Micah Walter ,Michael Sprague ,John Gibson ,Chris ,Jason Theodor ,
+		Marcin Wichary ,Rudy Winnacker ,Andrew Neal ,Chris Witko ,Dan Benson ,Pankaj Chobharkar ,
+		Carrie Norton ,Atin Batra ,Terrin Tokyo for Recommending our Medium Post. \m/
+
+		We would love your feedback. This is just the first version. Feel free to talk to us
+		or connect with us on twitter/product hunt/ medium / mail . :P
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Awesome</title>
+	<!--Import Google Icon Font-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script src="/js/clipboard.min.js"></script>
+
+
+			<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-63030577-2', 'auto');
+	  ga('send', 'published');
+
+	</script>
+
+
+</head>
+<body>
+
+	<nav style="background: rgba(255,255,255,0.97);">
+	<div class="nav-wrapper">
+		<!-- <a href="http://theclause.tk"> -->
+			<img src="/icons/clause.png" class="brand-logo center" height="100%">
+		<!-- </a> -->
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a href="#about-us" class="modal-trigger waves-effect waves-light" style="color:#424242;">About Us</a></li>
+		</ul>
+	</div>
+	</nav>
+
+	<div class="container">
+		<div class="row"></div>
+		<div class="row ">
+			<div class="col s10 offset-s2 card">
+				<div class="card-content">
+					<span class="card-title black-text" id="messagebox">Awesome.Your article has been published on Medium</span>
+				</div>
+			</div>
+					<% if(isDraft == 1) { %>
+						<div class="col s4 offset-s4" id="post">
+							<div class="row">
+					<div class="card hoverable">
+						<a href="<%=postUrl%>">
+						<div class="card-content">
+							<div class="row">
+								<a href="http://medium.com"><img src="/icons/medium.png" height="36px" style="margin-left:20px;"></a>
+							</div>
+								<div class="container">
+									<div class="row">
+										<a style="color: rgba(0,0,0,0.8); font-size:24px;" id="title" href="<%=postUrl%>"><%=posttitle%></a>
+										<div class="row"></div>
+										<div class="row">
+											<div class="col s12 valign-wrapper" style="color: rgba(0,0,0,0.6); font-size:14px;">
+												<img src="<%=imageUrl%>" id="user_img" alt="" class="circle" height="36px">
+												&nbsp;&nbsp;<a class="valign" id="user_name" href="<%=userUrl%>" ><%=username%></a>
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+						</a>
+					</div>
+					</div>
+				</div>
+					<% } else { %>
+						<div class="col s12 offset-s4" id="post">
+							<div class="row">
+
+						<script async src="https://static.medium.com/embed.js"></script><a class="m-story" data-collapsed="true" href="<%=postUrl%>"><%=posttitle%></a>
+					</div></div>
+				 <% } %>
+
+
+
+
+<div class="col s10 offset-s2 card" id="sharing">
+	<div class="card-content">
+		<span class="card-title black-text">Share your Post</span>
+		<div class="row">
+			<div class="input-field col s6 offset-s1">
+				<input id="foo" type="text" value="<%=postUrl%>">
+				<label for="foo">Copy to Clipboard</label>
+			</div><br>
+			<button class="btn" data-clipboard-target="#foo" id="share_link"><i class="material-icons">comment</i></button>
+		</div>
+		<span class="card-title black-text">Share the love</span>
+		<div class="row">
+			<div class="col s6 offset-s1">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://goo.gl/5GktLH" data-text="Publish to @Medium from @HemingwayApp with this Chrome extension" data-via="GetTheClause" data-size="large">Tweet about us</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- <footer class="page-footer" style="background:rgba(0,0,0,0.6);">
+		<div class="footer-copyright">
+			<div class="container">
+				Made by Aditya Shirole &amp; Pushkaraj Shinde. We love Medium &amp; HemingwayApp
+			<div class="right"><a class="grey-text text-lighten-4 " href="mailto:adityacr7shirole@gmail.com?" target="_blank">Mail us</a>
+				<br><a class="grey-text text-lighten-4 " href="https://twitter.com/Aditya_Shirole">Twiiter</a></div>
+			</div>
+		</div>
+	</footer> -->
+
+	<div id="about-us" class="modal">
+		<div class="modal-content">
+			<div class="row"></div>
+			<div class="row">
+				<div class="col s10 offset-s1">
+					<h4>About Us</h4>
+					<div class="row">
+						<h5>Two College Nerds with the Medium to change things.</h5>
+						<h6>We love Medium. We love HemingwayApp. So when the Medium Publish API was released, we knew what we wanted to do.</h6>
+					</div>
+					<div class="row"></div>
+					<div class="row">
+						<div class="col hoverable s6">
+							<div class="row"></div>
+							<div class="row">
+								<div class="col s5">
+									<img src="/icons/aditya.jpg" alt="" class="circle responsive-img">
+								</div>
+								<div class="col s7">
+									<span style="font-size:18px;">Aditya Shirole</span><br>
+									<span style="font-size:15px; color:#b71c1c;">Medium is my Drug</span><br>
+									<!--<span style="font-size:13px;">Aditya Shirole</span>-->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s4">
+									<center>
+										<a href="https://twitter.com/Aditya_Shirole">
+											<img src="/icons/twitter.png" alt="" height="30px">
+										</a>
+									</center>
+								</div>
+								<div class="col s4">
+									<center>
+										<a href="https://medium.com/@Aditya_Shirole">
+											<img src="/icons/mediumg.png" alt="" height="30px">
+										</a>
+									</center>
+								</div>
+								<div class="col s4">
+									<center>
+										<a href="https://www.producthunt.com/@aditya_shirole">
+											<img src="/icons/ph.png" alt="" height="30px">
+										</a>
+									</center>
+								</div>
+							</div>
+						</div>
+						<div class="col hoverable s6">
+							<div class="row"></div>
+							<div class="row">
+								<div class="col s5">
+									<img src="/icons/push.jpg" alt="" class="circle responsive-img">
+								</div>
+								<div class="col s7">
+									<span style="font-size:18px;">Pushkaraj Shinde</span><br>
+									<span style="font-size:15px; color:#b71c1c;">Info-Maniac</span><br>
+									<!--<span style="font-size:13px;">Aditya Shirole</span>-->
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s4">
+									<center>
+										<a href="https://twitter.com/push_shinde">
+											<img src="/icons/twitter.png" alt="" height="30px">
+										</a>
+									</center>
+								</div>
+								<div class="col s4">
+									<center>
+										<a href="https://medium.com/@Push.">
+											<img src="/icons/mediumg.png" alt="" height="30px">
+										</a>
+									</center>
+								</div>
+								<div class="col s4">
+									<center>
+										<a href="https://www.producthunt.com/@push_shinde">
+											<img src="/icons/ph.png" alt="" height="30px">
+										</a>
+									</center>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+
+		$('.modal-trigger').leanModal();
+
+		var clipboard = new Clipboard('.btn');
+		clipboard.on('success', function(e) {
+		    Materialize.toast('Copied to clipboard!', 4000);
+		    e.clearSelection();
+		});
+
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0],
+			p=/^http:/.test(d.location)?'http':'https';
+			if(!d.getElementById(id)){
+				js=d.createElement(s);
+				js.id=id;
+				js.src=p+'://platform.twitter.com/widgets.js';
+				fjs.parentNode.insertBefore(js,fjs);
+			}
+		}(document, 'script', 'twitter-wjs');
+
+	</script>
+
+
+</body>
+</html>
+
+
+<!--
+{ id: '1bca79450a7cbaf2654d61271694d08ce7985e8182c95290897d2323485021822',
+     username: 'Push.',
+     name: 'Pushkaraj Shinde',
+     url: 'https://medium.com/@Push.',
+     imageUrl: 'https://cdn-images-1.medium.com/fit/c/200/200/0*MtJD51Qr36o2Twv9.jpg' } } { data:
+   { id: 'fdb5b2bad399',
+     title: 'Another story posted from hemingwayapp to Medium',
+     authorId: '1bca79450a7cbaf2654d61271694d08ce7985e8182c95290897d2323485021822',
+     url: 'https://medium.com/@Push./fdb5b2bad399',
+     canonicalUrl: '',
+     publishStatus: 'draft',
+     license: 'all-rights-reserved',
+     licenseUrl: 'https://medium.com/policy/9db0094a1e0f',
+     tags: [] } }
+
+       -->

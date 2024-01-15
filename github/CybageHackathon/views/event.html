@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ./partials/head.html %>
+</head>
+<body>
+
+	<header>
+		<% include ./partials/header.html %>
+	</header>
+	
+	<main>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10">
+            <div class="well bs-component">
+              <form class="form-horizontal">
+                <fieldset>
+                  <!-- <legend>Create new Event</legend> -->
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">Title</label>
+                    <div class="col-lg-10">
+                      <label class="control-label"><%= title %></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">Description</label>
+                    <div class="col-lg-10">
+                      <label class="control-label"><%= description %></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">Time</label>
+                    <div class="col-lg-10">
+                      <label class="control-label"><%= time %></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">Points</label>
+                    <div class="col-lg-10">
+                      <label class="control-label"><%= points %></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+    <input type="button" onclick="makeRelation()" value="Join Cause" id="btn1">
+                      
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+	</main>
+
+	<script type="text/javascript">
+		function makeRelation() {
+			var data = {};
+			data.event_id = parseInt(window.location.pathname.split('/')[2]);
+			data.user_id = 0;
+			var url = "http://localhost:8080/api/event/update/" + data.user_id + "/" + data.event_id;
+			console.log(url);
+			var xmlHttp = new XMLHttpRequest();
+	    xmlHttp.open("GET" ,url , true);
+	    //xmlHttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+	    //xmlHttp.send(JSON.stringify(data));
+	    xmlHttp.onreadystatechange = function () {
+  		  if(xmlHttp.readyState==4)
+	  		  console.log('success');
+        if(xmlHttp.responseText=='ok')
+          document.getElementById('btn1').value = 'Registered';
+	  		  //window.location = 'http://localhost:8080/event/' + JSON.parse(xmlHttp.responseText).event_id;
+  		};
+		}
+	</script>
+
+	<footer>	
+		<% include ./partials/footer.html %>
+	</footer>
+
+</body>
+</html>

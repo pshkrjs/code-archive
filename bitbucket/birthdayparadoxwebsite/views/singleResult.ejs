@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  </head>
+  <body>
+      <div class="container">
+        <div class="row">
+        <div class="col l8 offset-l2">
+          <div class="card green darken-1">
+            <div class="card-content white-text">
+
+              <span class="card-title">Expected Probability = <%= result.Expected_Prob%></span>
+              <br>
+              <span class="card-title">Experimental Probability = <%= result.Calculated_Prob%></span>
+              <br>
+              <span class="card-title">Number of People in the Room = <%= result.numberOfPeople%></span>
+              <br>
+              <span class="card-title">Number of Trials = <%= result.numberOfTries%></span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+
+
+      <footer style="position:absolute;bottom:0;,height:40px;,margin-top:40px;">
+        <% include ./footer %>
+      </footer>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+  </body>
+</html>

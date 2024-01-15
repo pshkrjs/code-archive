@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ./partials/head.html %>
+</head>
+<body>
+
+	<header>
+		<% include ./partials/header.html %>
+	</header>
+	
+	<main>
+  <div class="container">
+  	<div class="row" style="margin-top:2rem;">
+  		<div class="row">LEVEL</div>
+  		<div class="progress progress-striped active">
+		  	<div class="progress-bar" style="width: 45%"></div>
+			</div>
+		</div>
+		<% for(var i=0; i< title.length; i++){ if(title[i].metadata.labels[0]=='event') { %>
+		<div class="row">
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title"><%= title[i].data.title %></h3>
+			  </div>
+			  <div class="panel-body">
+		    	<p>Description</p>
+		    	<p><%= title[i].data.description %></p>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-primary" onclick="openEvent('<%=title[i].metadata.id %>')">Join Cause</button>
+                    </div>
+                  </div>
+			  </div>
+			</div>
+		</div>
+		<% }} %>
+	</div>
+	</main>
+
+	<script type="text/javascript">
+		function openEvent (eventId) {
+			window.location = 'http://localhost:8080/event/'+eventId;
+		}
+	</script>
+
+	<footer>	
+		<% include ./partials/footer.html %>
+	</footer>
+
+</body>
+</html>
